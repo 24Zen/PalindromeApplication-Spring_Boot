@@ -1,5 +1,4 @@
-PalindromeApplication-Spring_Boot 🌀
-This project is a Spring Boot application that creates a REST API to check whether a given word is a palindrome.
+🌀 This project is a Spring Boot application that creates a REST API to check whether a given word is a palindrome.
 
 📖 Project Description
 Accepts a word from the user via an HTTP GET parameter
