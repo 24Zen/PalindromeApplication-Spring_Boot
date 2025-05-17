@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <input id="wordInput" type="text" placeholder="Enter word" />
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result"></p>
+
+    <script>
+      function checkPalindrome() {
+        const word = document.getElementById('wordInput').value;  // อ่านค่า input ที่กรอก
+        if (!word) {
+          document.getElementById('result').innerText = 'Please enter a word';
+          return;
+        }
+        
+        fetch(`/palindrome/check?word=${encodeURIComponent(word)}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data.isPalindrome) {
+              document.getElementById('result').innerText = `"${data.word}" is a palindrome.`;
+            } else {
+              document.getElementById('result').innerText = `"${data.word}" is not a palindrome.`;
+            }
+          })
+          .catch(err => {
+            document.getElementById('result').innerText = 'Error fetching palindrome status.';
+          });
+      }
+    </script>
+</body>
+</html>
